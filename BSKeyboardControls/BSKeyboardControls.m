@@ -47,10 +47,17 @@
             [self setRightArrowButton:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:106 target:self action:@selector(selectNextField)]];
             
         } else {
-            [self setBarStyle:UIBarStyleBlackTranslucent];
+            [self setBarStyle:UIBarStyleDefault];
             
-            [self setSegmentedControl:[[UISegmentedControl alloc] initWithItems:@[ NSLocalizedStringFromTable(@"Previous", @"BSKeyboardControls", @"Previous button title."),
-                                                                                   NSLocalizedStringFromTable(@"Next", @"BSKeyboardControls", @"Next button title.") ]]];
+            
+            NSArray *items = @[
+                               [[UIImage imageNamed:@"keyboardLeft.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal],
+                               [[UIImage imageNamed:@"keyboardRight.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                               ];
+//            [self setSegmentedControl:[[UISegmentedControl alloc] initWithItems:@[ NSLocalizedStringFromTable(@"Previous", @"BSKeyboardControls", @"Previous button title."),
+//                                                                                   NSLocalizedStringFromTable(@"Next", @"BSKeyboardControls", @"Next button title.") ]]];
+            [self setSegmentedControl:[[UISegmentedControl alloc] initWithItems:items]];
+            
             [self.segmentedControl addTarget:self action:@selector(segmentedControlValueChanged:) forControlEvents:UIControlEventValueChanged];
             
             [self.segmentedControl setMomentary:YES];
